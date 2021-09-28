@@ -14,7 +14,9 @@ class TeamController extends Controller
      */
     public function index()
     {
-        throw new \Exception('Niet geïmplementeerd - lijst van teams kan nog niet getoond worden.');
+        $teams = Team::all();
+        return view('teams/index')
+                ->with('teams', $teams);
     }
 
     /**
@@ -24,7 +26,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        return view('teams/create');
     }
 
     /**
@@ -35,7 +37,19 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'sort' => 'required',
+            'country'=>'required'
+        ]);
+        
+        $team = new Team();
+        $team->name = $request->name;
+        $team->sort = ucfirst($request->sort);
+        $team->country = ucfirst($request->country);
+        $team->save();
+        
+        return redirect()->route('teams.index');
     }
 
     /**
@@ -57,7 +71,8 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        //
+        return view('teams/edit')
+                ->with('team', $team);
     }
 
     /**
@@ -69,7 +84,18 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'sort' => 'required',
+            'country'=>'required'
+        ]);
+        
+        $team->name = $request->name;
+        $team->sort = ucfirst($request->sort);
+        $team->country = ucfirst($request->country);
+        $team->save();
+        
+        return redirect()->route('teams.index');
     }
 
     /**

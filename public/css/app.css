@@ -1,5 +1,5 @@
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans',Arial, Helvetica, sans-serif;
     margin: 0;
     background-color: #f2f2f2;
 }
@@ -58,6 +58,7 @@ img.logo{
 
 .table{
     width: 100%;
+    padding-top: 20px;
 }
 
 .table th{
@@ -84,4 +85,47 @@ label{
 
 .form-control{
     min-width: 200px;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex-row-between{
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.flex-column-between{
+    flex-direction: column;
+    justify-content: space-between;
+}
+.flex-row-between > div{
+    width: 50%;
+}
+
+.img-dashboard{
+    width: 100%;
+}
+
+.border{
+    border: 2px solid #EEBA30;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.dashboard-stats > div{
+    padding: 0px 100px 80px 100px;
+}
+.dashboard-stats p{
+    font-size: 1.4rem;
+    margin-bottom: 0;
+}
+.dashboard-stats span{
+    font-size: 1.6rem;
+    font-weight: bold;
 }

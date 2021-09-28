@@ -38,11 +38,15 @@ class TournamentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'date' => 'required|date_format:Y-m-d',
+            'starttijd'=>'required|date_format:H:i'
         ]);
         
         $tournament = new Tournament();
         $tournament->name = $request->name;
+        $tournament->date = $request->date;
+        $tournament->starttijd = $request->starttijd;
         $tournament->save();
         
         return redirect()->route('tournaments.index');
@@ -70,10 +74,14 @@ class TournamentController extends Controller
     public function update(Request $request, Tournament $tournament)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'date' => 'required|date_format:Y-m-d',
+            'starttijd'=>'required|date_format:H:i'
         ]);
         
         $tournament->name = $request->name;
+        $tournament->date = $request->date;
+        $tournament->starttijd = $request->starttijd;
         $tournament->save();
         
         return redirect()->route('tournaments.index');
