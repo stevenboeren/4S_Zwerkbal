@@ -129,3 +129,12 @@ label{
     font-size: 1.6rem;
     font-weight: bold;
 }
+
+.dashboard-upcoming > div p{
+    font-size: 1.4rem;
+    margin-bottom: 0;
+}
+.dashboard-upcoming span{
+    font-size: 1.6rem;
+    font-weight: bold;
+}
