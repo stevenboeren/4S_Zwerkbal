@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\UpcomingTournamentController;
 /*
 |--------------------------------------------------------------------------
@@ -34,5 +35,12 @@ Route::post('/teams',[TeamController::class,'store'])->name('teams.store');
 Route::put('/teams/{team}', [TeamController::class, 'update'])->name('teams.update');
 
 Route::get('/upcoming', [UpcomingTournamentController::class, 'show'])->name('upcoming.index');
+
+Route::get('/players', [PlayerController::class, 'index'])->name('players.index');
+Route::get('/players/create',[PlayerController::class,'create'])->name('players.create');
+Route::get('/players/{player}/edit',[PlayerController::class,'edit'])->name('players.edit');
+Route::post('/players',[playerController::class,'store'])->name('players.store');
+Route::put('/players/{player}', [PlayerController::class, 'update'])->name('players.update');
+
 
 

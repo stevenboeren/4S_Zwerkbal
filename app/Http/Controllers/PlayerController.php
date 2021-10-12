@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Player;
 use App\Models\Team;
 use Illuminate\Http\Request;
 
-class TeamController extends Controller
+class PlayerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,9 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = Team::all();
-        return view('teams/index')
-                ->with('teams', $teams);
+        $players = Player::all();
+        return view('players/index')
+                ->with('players', $players);
     }
 
     /**
@@ -26,7 +27,9 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('teams/create');
+        $teams = Team::all();
+        return view('players/create')
+                ->with('teams', $teams);
     }
 
     /**
@@ -40,25 +43,25 @@ class TeamController extends Controller
         $request->validate([
             'name' => 'required',
             'type' => 'required',
-            'origin'=>'required'
+            'team_id'=>'required'
         ]);
         
-        $team = new Team();
-        $team->name = $request->name;
-        $team->type = ucfirst($request->type);
-        $team->origin = ucfirst($request->origin);
-        $team->save();
+        $player = new Player();
+        $player->name = $request->name;
+        $player->type = ucfirst($request->type);
+        $player->team_id = ucfirst($request->team_id);
+        $player->save();
         
-        return redirect()->route('teams.index');
+        return redirect()->route('players.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Team  $team
+     * @param  \App\Models\Player  $player
      * @return \Illuminate\Http\Response
      */
-    public function show(Team $team)
+    public function show(Player $player)
     {
         //
     }
@@ -66,45 +69,33 @@ class TeamController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Team  $team
+     * @param  \App\Models\Player  $player
      * @return \Illuminate\Http\Response
      */
-    public function edit(Team $team)
+    public function edit(Player $player)
     {
-        return view('teams/edit')
-                ->with('team', $team);
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Team  $team
+     * @param  \App\Models\Player  $player
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Team $team)
+    public function update(Request $request, Player $player)
     {
-        $request->validate([
-            'name' => 'required',
-            'type' => 'required',
-            'origin'=>'required'
-        ]);
         
-        $team->name = $request->name;
-        $team->type = ucfirst($request->type);
-        $team->origin = ucfirst($request->origin);
-        $team->save();
-        
-        return redirect()->route('teams.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Team  $team
+     * @param  \App\Models\Player  $player
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Team $team)
+    public function destroy(Player $player)
     {
         //
     }
