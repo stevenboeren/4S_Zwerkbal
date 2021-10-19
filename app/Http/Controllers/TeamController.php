@@ -45,8 +45,8 @@ class TeamController extends Controller
         
         $team = new Team();
         $team->name = $request->name;
-        $team->type = ucfirst($request->type);
-        $team->origin = ucfirst($request->origin);
+        $team->type = $request->type;
+        $team->origin = $request->origin;
         $team->save();
         
         return redirect()->route('teams.index');

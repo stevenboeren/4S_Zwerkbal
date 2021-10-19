@@ -48,8 +48,8 @@ class PlayerController extends Controller
         
         $player = new Player();
         $player->name = $request->name;
-        $player->type = ucfirst($request->type);
-        $player->team_id = ucfirst($request->team_id);
+        $player->type = $request->type;
+        $player->team_id = $request->team_id;
         $player->save();
         
         return redirect()->route('players.index');

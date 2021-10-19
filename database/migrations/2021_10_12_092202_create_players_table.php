@@ -19,6 +19,7 @@ class CreatePlayersTable extends Migration
             $table->string('type');
             $table->timestamps();
             $table->unsignedBigInteger('team_id');
+            $table->foreign('team_id')->references('id')->on('teams');
         });
     }
 

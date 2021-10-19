@@ -24,7 +24,7 @@
         @foreach($players as $player)
             <tr>
                 <td>{{ $player->name }}</td>
-                <td>{{ $player->type }}</td>
+                <td>{{ ucfirst($player->type) }}</td>
                 <td>{{ $player->team->name }}</td>
             </tr>
         @endforeach
